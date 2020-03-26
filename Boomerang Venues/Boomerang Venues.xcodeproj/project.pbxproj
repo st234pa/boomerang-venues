@@ -12,7 +12,6 @@
 		0150CDC9242D709E00E1D20B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0150CDC7242D709E00E1D20B /* Main.storyboard */; };
 		0150CDCB242D70A000E1D20B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0150CDCA242D70A000E1D20B /* Assets.xcassets */; };
 		0150CDCE242D70A000E1D20B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0150CDCC242D70A000E1D20B /* LaunchScreen.storyboard */; };
-		0150CDD9242D70A100E1D20B /* Boomerang_VenuesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0150CDD8242D70A100E1D20B /* Boomerang_VenuesTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,8 +33,6 @@
 		0150CDCD242D70A000E1D20B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0150CDCF242D70A000E1D20B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0150CDD4242D70A000E1D20B /* Boomerang VenuesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Boomerang VenuesTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		0150CDD8242D70A100E1D20B /* Boomerang_VenuesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Boomerang_VenuesTests.swift; sourceTree = "<group>"; };
-		0150CDDA242D70A100E1D20B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,7 +57,6 @@
 			isa = PBXGroup;
 			children = (
 				0150CDC2242D709E00E1D20B /* Boomerang Venues */,
-				0150CDD7242D70A100E1D20B /* Boomerang VenuesTests */,
 				0150CDC1242D709E00E1D20B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -85,15 +81,6 @@
 				0150CDCF242D70A000E1D20B /* Info.plist */,
 			);
 			path = "Boomerang Venues";
-			sourceTree = "<group>";
-		};
-		0150CDD7242D70A100E1D20B /* Boomerang VenuesTests */ = {
-			isa = PBXGroup;
-			children = (
-				0150CDD8242D70A100E1D20B /* Boomerang_VenuesTests.swift */,
-				0150CDDA242D70A100E1D20B /* Info.plist */,
-			);
-			path = "Boomerang VenuesTests";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -206,7 +193,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0150CDD9242D70A100E1D20B /* Boomerang_VenuesTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

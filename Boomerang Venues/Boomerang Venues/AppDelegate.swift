@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  Boomerang Venues
 //
-//  Created by STmb2 on 3/26/20.
+//  Created by Stephanie Yoon on 3/26/20.
 //  Copyright © 2020 Stephanie Yoon. All rights reserved.
 //
 
