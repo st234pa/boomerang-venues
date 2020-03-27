@@ -1,0 +1,30 @@
+{
+  "placeholder location 0": {
+    "name": "Niagara Falls",
+    "image": "",
+    "lat": 0,
+    "long": 0,
+    "venues": {
+      "food": [
+        { "name": "Support Your", "rating": 5, "key": 0, "image": "" },
+        { "name": "Local Businesses", "rating": 5, "key": 1, "image": "" }
+      ],
+      "drink": [],
+      "sights": []
+    }
+  },
+  "placeholder location 1": {
+    "name": "Grand Canyon",
+    "image": "",
+    "lat": 0,
+    "long": 0,
+    "venues": {
+      "food": [
+        { "name": "Support Your", "rating": 5, "key": 0, "image": "" },
+        { "name": "Local Businesses", "rating": 5, "key": 1, "image": "" }
+      ],
+      "drink": [],
+      "sights": []
+    }
+  }
+}

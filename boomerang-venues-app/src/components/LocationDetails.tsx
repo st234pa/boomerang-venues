@@ -23,13 +23,19 @@ function LocationDetails(props: LocationDetailsProps) {
     <div className="LocationDetails">
         <Row>
           <Col>
-          {VenueCategory({ name: 'Trending', venueList: props.venues["trending"]})}
+          {VenueCategory({ name: 'Food', venueList: props.venues["trending"]})}
           </Col>
         </Row>
         <br></br>
         <Row>
           <Col>
-          {VenueCategory({ name: 'Food', venueList: props.venues["food"]})}
+          {VenueCategory({ name: 'Drink', venueList: props.venues["food"]})}
+          </Col>
+        </Row>
+        <br></br>
+        <Row>
+          <Col>
+          {VenueCategory({ name: 'Sights', venueList: props.venues["sights"]})}
           </Col>
         </Row>
       <br></br>

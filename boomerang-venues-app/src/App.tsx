@@ -10,41 +10,14 @@ interface AppDataSet {
 }
 
 function App() {
-  const [data, setData] = useState<AppDataSet>({
-    'placeholder location 0': {
-      name: 'Niagara Falls',
-      image: '',
-      lat: 0,
-      long: 0,
-      venues: {
-        trending: [
-          { name: 'Support Your', rating: 5, key: 0, image: '' },
-          { name: 'Local Businesses', rating: 5, key: 1, image: '' },
-        ],
-        food: [],
-      },
-    },
-    'placeholder location 1': {
-      name: 'Grand Canyon',
-      image: '',
-      lat: 0,
-      long: 0,
-      venues: {
-        trending: [
-          { name: 'Support Your', rating: 5, key: 0, image: '' },
-          { name: 'Local Businesses', rating: 5, key: 1, image: '' },
-        ],
-        food: [],
-      },
-    },
-  });
+  const [data, setData] = useState<AppDataSet>({});
   var locations: LocationDetailsProps[] = [];
 
   useEffect(() => {
-    fetch('http://localhost:5000/venues')
+    fetch('http://localhost:5000/sampledata')
       .then(res => res.json())
       .then(result => {
-        // setData(result);
+        setData(result);
       });
   }, []);
 
