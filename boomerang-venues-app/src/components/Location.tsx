@@ -33,7 +33,7 @@ function Location(props: LocationProps) {
               </Card.Body>
               <Accordion.Collapse eventKey="0">
                 <div className="venuesNearHere">
-                  {props.venues.length == 0? <h6>Nothing to see here &#128531;</h6> : <h6>What's there to do around here &#128520;?</h6>}
+                  {props.venues.length === 0? <h6>Nothing to see here &#128531;</h6> : <h6>What's there to do around here &#128520;?</h6>}
                   <Card.Body>
                     {LocationDetails({
                       name: props.name,
