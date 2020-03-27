@@ -1,29 +1,32 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Card } from 'react-bootstrap';
 
 interface VenueProps {
-  index: number;
-  value: string;
+  name: string;
+  rating: number;
+  key: number;
 }
 
 function Venue(props: VenueProps) {
   return (
-    <div className="row">
-      <div className="col">
-        <div className="Venue">
-          <div className="card">
-            <div className="card-body">
-              <h5 className="card-title">{props.index}</h5>
-              <p className="card-text">{props.value}</p>
-              <a href="#" className="btn btn-primary">
-                Go somewhere
-              </a>
-            </div>
+    <div key={props.key}>
+      <br></br>
+      <div className="row">
+        <div className="col">
+          <div className="Venue">
+            <Card>
+              <Card.Img variant="top" src="holder.js/100px180" />
+              <Card.Body>
+                <Card.Title>{props.name}</Card.Title>
+                <Card.Text>{props.rating} out of 5 stars</Card.Text>
+              </Card.Body>
+            </Card>
           </div>
         </div>
       </div>
     </div>
   );
 }
-
-export default Venue;
+export type {VenueProps};
+export { Venue };
