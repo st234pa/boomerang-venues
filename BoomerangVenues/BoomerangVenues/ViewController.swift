@@ -15,9 +15,10 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        let url = URL(string: "http://localhost:3000")
+        let url = URL(string: "http://localhost:3000/")
         let request = URLRequest(url: url!)
         webView.load(request)
+        print("loaded url")
     }
 
 
