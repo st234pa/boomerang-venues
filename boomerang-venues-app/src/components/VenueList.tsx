@@ -2,7 +2,7 @@ import React from 'react';
 import '../App.css';
 import { Venue, VenueProps } from './Venue';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Carousel } from 'react-bootstrap';
+import { Carousel, Container } from 'react-bootstrap';
 
 interface VenueListProps {
   venues: VenueProps[];
@@ -11,7 +11,7 @@ interface VenueListProps {
 function VenueList(props: VenueListProps) {
   return (
     <div className="VenueList">
-      <div className="container-fluid">
+      <Container fluid>
         <Carousel>
           {props.venues.map((venue: VenueProps) => {
             return (
@@ -26,7 +26,7 @@ function VenueList(props: VenueListProps) {
             );
           })}
         </Carousel>
-      </div>
+      </Container>
       <br></br>
     </div>
   );

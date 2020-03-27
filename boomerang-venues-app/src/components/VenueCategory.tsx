@@ -6,11 +6,18 @@ import {VenueProps} from './Venue';
 
 interface VenueCategoryProps {
   name: string;
-  venues: VenueProps[];
+  venueList: VenueProps[];
 }
 
 function VenueCategory(props: VenueCategoryProps) {
+  function categoryDisplay(venues: VenueProps[]) {
+    if (venues.length == 0) {
+      return (<p>Nothing to see here &#128531;</p>);
+    }
+    return VenueList({ venues: props.venueList});
+  }
   return (
+    <div className="VenueCategory" key={props.name}>
     <Accordion>
       <Card>
         <Card.Header>
@@ -19,10 +26,11 @@ function VenueCategory(props: VenueCategoryProps) {
           </Accordion.Toggle>
         </Card.Header>
         <Accordion.Collapse eventKey="0">
-          <Card.Body>{VenueList({ venues: props.venues })}</Card.Body>
+          <Card.Body>{categoryDisplay(props.venueList)}</Card.Body>
         </Accordion.Collapse>
       </Card>
     </Accordion>
+    </div>
   );
 }
 

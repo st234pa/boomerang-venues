@@ -1,36 +1,48 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-import { Location } from './components/Location';
+import { LocationList } from './components/LocationList';
+import { LocationDetailsProps } from './components/LocationDetails';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { VenueListProps } from './components/VenueList';
+import { Container } from 'react-bootstrap';
 
-interface VenueListDataSet {
-  [key: string]: VenueListProps;
-}
-
-interface CategoryDataSet {
-  [key: string]: VenueListDataSet;
+interface AppDataSet {
+  [key: string]: LocationDetailsProps;
 }
 
 function App() {
-  const [categoryData, setCategoryData] = useState<CategoryDataSet>({});
+  const [data, setData] = useState<AppDataSet>({
+    'placeholder location': {
+      name: 'Niagara Falls',
+      image: '',
+      lat: 0,
+      long: 0,
+      venues: {
+        trending: [
+          { name: 'Support Your', rating: 5, key: 0 },
+          { name: 'Local Businesses', rating: 5, key: 1 },
+        ],
+        food: [],
+      },
+    },
+  });
+  var locations: LocationDetailsProps[] = [];
 
   useEffect(() => {
     fetch('http://localhost:5000/venues')
       .then(res => res.json())
       .then(result => {
-        setCategoryData(result);
+        // setData(result);
       });
   }, []);
 
-  Object.keys(categoryData).forEach(key => {});
+  Object.keys(data).forEach(key => {
+    locations.push(data[key]);
+  });
 
   return (
     <div className="App">
       <br></br>
-      <div className="container-fluid">
-        {Location({ name: '', image: '', lat: 0, long: 0, venues: [] })}
-      </div>
+      <Container fluid>{LocationList({ locations: locations })}</Container>
       <br></br>
     </div>
   );

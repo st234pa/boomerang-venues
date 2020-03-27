@@ -1,6 +1,6 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Card } from 'react-bootstrap';
+import { Card, Row, Col } from 'react-bootstrap';
 
 interface VenueProps {
   name: string;
@@ -10,11 +10,10 @@ interface VenueProps {
 
 function Venue(props: VenueProps) {
   return (
-    <div key={props.key}>
+    <div className="Venue" key={props.key}>
       <br></br>
-      <div className="row">
-        <div className="col">
-          <div className="Venue">
+      <Row>
+        <Col>
             <Card>
               <Card.Img variant="top" src="holder.js/100px180" />
               <Card.Body>
@@ -22,9 +21,8 @@ function Venue(props: VenueProps) {
                 <Card.Text>{props.rating} out of 5 stars</Card.Text>
               </Card.Body>
             </Card>
-          </div>
-        </div>
-      </div>
+        </Col>
+      </Row>
     </div>
   );
 }
