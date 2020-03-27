@@ -12,7 +12,7 @@ function Location(props: LocationDetailsProps) {
         <Col>
           <Accordion>
             <Card>
-              <Card.Img variant="top" src="holder.js/100px180" />
+              <Card.Img variant="top" src={props.image} alt="Image not found" />
               <br></br>
               <Card.Title>{props.name}</Card.Title>
               <Card.Body>

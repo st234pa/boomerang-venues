@@ -5,6 +5,7 @@ import { Card, Row, Col } from 'react-bootstrap';
 interface VenueProps {
   name: string;
   rating: number;
+  image: string;
   key: number;
 }
 
@@ -15,7 +16,7 @@ function Venue(props: VenueProps) {
       <Row>
         <Col>
             <Card>
-              <Card.Img variant="top" src="holder.js/100px180" />
+              <Card.Img variant="top" src={props.image} alt="Image not found" />
               <Card.Body>
                 <Card.Title>{props.name}</Card.Title>
                 <Card.Text>{props.rating} out of 5 stars</Card.Text>

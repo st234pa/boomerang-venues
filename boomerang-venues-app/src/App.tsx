@@ -18,8 +18,8 @@ function App() {
       long: 0,
       venues: {
         trending: [
-          { name: 'Support Your', rating: 5, key: 0 },
-          { name: 'Local Businesses', rating: 5, key: 1 },
+          { name: 'Support Your', rating: 5, key: 0, image: '' },
+          { name: 'Local Businesses', rating: 5, key: 1, image: '' },
         ],
         food: [],
       },
@@ -31,8 +31,8 @@ function App() {
       long: 0,
       venues: {
         trending: [
-          { name: 'Support Your', rating: 5, key: 0 },
-          { name: 'Local Businesses', rating: 5, key: 1 },
+          { name: 'Support Your', rating: 5, key: 0, image: '' },
+          { name: 'Local Businesses', rating: 5, key: 1, image: '' },
         ],
         food: [],
       },

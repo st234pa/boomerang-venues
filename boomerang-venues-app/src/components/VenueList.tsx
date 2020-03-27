@@ -20,6 +20,7 @@ function VenueList(props: VenueListProps) {
                   rating: venue.rating,
                   name: venue.name,
                   key: venue.key,
+                  image: venue.image
                 })}
                 <br></br>
               </Carousel.Item>
