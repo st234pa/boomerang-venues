@@ -10,7 +10,7 @@ interface LocationProps {
   image: string;
   lat: number;
   long: number;
-  id: string;
+  locationId: string;
   venues: VenueProps[];
 }
 
@@ -41,7 +41,7 @@ function Location(props: LocationProps) {
                       lat: props.lat,
                       long: props.long,
                       venues: props.venues,
-                      id: props.id
+                      locationId: props.locationId
                     })}
                   </Card.Body>
                 </div>

@@ -6,49 +6,73 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import { VenueProps } from './components/Venue';
 
-interface LocationDataSet {
+interface LocationsDataSet {
   locations: LocationProps[];
 }
 
-interface VenueDataSet {
+interface VenuesDataSet {
   venues: VenueProps[];
 }
 
 function App() {
   const [refreshCount, setRefreshCount] = useState(0);
 
-  const [locationData, setLocationData] = useState<LocationDataSet>({
-    locations: [{ lat: 0, long: 0, name: '', image: '', id: '', venues: [] }],
+  const [locationsData, setLocationsData] = useState<LocationsDataSet>({
+    locations: [
+      {
+        lat: 0,
+        long: 0,
+        name: '',
+        image: '',
+        locationId: '',
+        venues: [],
+      },
+    ],
   });
 
-  const [lat, setLat] = useState(40.7484);
-  const [long, setLong] = useState(-73.9857);
+  const [venuesData, setVenuesData] = useState<VenueProps[]>([]);
 
-  const [venueData, setVenueData] = useState<VenueDataSet>({ venues: [] });
+  const venueIds: string[] = [];
+  const venues: VenueProps[] = [];
 
   useEffect(() => {
-    const url: string = 'http://localhost:5000/locationdata/' + refreshCount;
-    fetch(url)
-      .then(res => res.json())
-      .then(result => {
-        setLocationData(result);
+    const locationsUrl: string =
+      'http://localhost:5000/locationsdata/' + refreshCount;
+    fetch(locationsUrl)
+      .then(locationsResult => locationsResult.json())
+      .then(locationsObject => {
+        setLocationsData(locationsObject);
+        locationsObject.locations.forEach((location: LocationProps) => {
+          const venueIdsUrl: string =
+            'http://localhost:5000/venueidsdata/' +
+            location.lat +
+            ',' +
+            location.long;
+          fetch(venueIdsUrl)
+            .then(venueIdsResult => venueIdsResult.json())
+            .then(venuesIdsObject => {
+              venuesIdsObject.venueIds.forEach((venueId: string) => {
+                venueIds.push(venueId);
+              });
+              venueIds.forEach((venueId: string) => {
+                const venueUrl =
+                  'http://localhost:5000/venuedata/' +
+                  venueId +
+                  ',' +
+                  location.locationId;
+                fetch(venueUrl)
+                  .then(venueResult => venueResult.json())
+                  .then(venueObject => {
+                    venues.push(venueObject);
+                    setVenuesData(venues);
+                  });
+              });
+            });
+        });
       });
-  }, [refreshCount, lat, long]);
+  }, [refreshCount]);
 
-  useEffect(() => {
-    setLat(locationData.locations[0].lat);
-    setLong(locationData.locations[0].long);
-  }, [locationData]);
-
-  useEffect(() => {
-    fetch('http://localhost:5000/venuedata/' + lat + ',' + long)
-      .then(res => res.json())
-      .then(result => {
-        setVenueData(result.venues);
-      });
-  }, [lat, long]);
-
-  if (locationData && venueData) {
+  if (locationsData && venues) {
     return (
       <div className="App">
         <br></br>
@@ -68,8 +92,8 @@ function App() {
           <Row>
             <Col>
               {LocationList({
-                locations: locationData.locations,
-                venues: venueData.venues,
+                locations: locationsData.locations,
+                venues: venuesData,
               })}
             </Col>
           </Row>

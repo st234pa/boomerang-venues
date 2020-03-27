@@ -6,13 +6,14 @@ interface VenueProps {
   name: string;
   rating: number;
   image: string;
-  id: string;
+  locationId: string;
+  venueId: string;
   category: string;
 }
 
 function Venue(props: VenueProps) {
   return (
-    <div className="Venue" key={props.id}>
+    <div className="Venue" key={props.venueId}>
       <br></br>
       <Row>
         <Col>

@@ -15,30 +15,31 @@ function LocationList(props: LocationListProps) {
   var venuesByLocation: VenueLocationMap = {};
   function sortVenuesByLocation() {
     var venueMap: VenueLocationMap = {};
-    if (props.locations) {
-      props.locations.forEach(location => {
-        const locationid = location.id;
-        if (!(venueMap[locationid])) {
-          venueMap[locationid] = [];
+      props.locations.forEach((location: LocationProps)=> {
+        const locationId: string = location.locationId;
+        console.log(locationId)
+        if (!(venueMap[locationId])) {
+          venueMap[locationId] = [];
         }
       })
-    }
-    if (props.venues) {
-      props.venues.forEach(venue => {
-        const venueid = venue.id;
-        if (venueMap[venueid]) {
-          venueMap[venueid].push(venue);
+      console.log(props.venues)
+      props.venues.forEach((venue: VenueProps) => {
+        const venueLocationId: string = venue.locationId;
+        console.log(venueLocationId);
+        if (venueMap[venueLocationId]) {
+          venueMap[venueLocationId].push(venue);
         }
-      })}
+      })
     return venueMap;
   }
   venuesByLocation = sortVenuesByLocation();
+  console.log(venuesByLocation)
   return (
     <div className="Location">
       <br></br>
             {props.locations.map((location: LocationProps) => {
-              return (<div key={location.id}>{Location({
-                name: location.name, image: location.image, lat: location.lat, long: location.long, id: location.id, venues: venuesByLocation[location.id]
+              return (<div key={location.locationId}>{Location({
+                name: location.name, image: location.image, locationId: location.locationId, lat: location.lat, long: location.long, venues: venuesByLocation[location.locationId]
               })}</div>)
             })}
         <br></br>
