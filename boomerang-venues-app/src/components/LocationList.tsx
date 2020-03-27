@@ -9,21 +9,21 @@ interface LocationListProps {
   venues: VenueProps[];
 }
 interface VenueLocationMap {
-  [key: number]: VenueProps[];
+  [id: string]: VenueProps[];
 }
 function LocationList(props: LocationListProps) {
   var venuesByLocation: VenueLocationMap = {};
   function sortVenuesByLocation() {
     var venueMap: VenueLocationMap = {};
     props.locations.forEach(location => {
-      const locationkey = location.key;
-      if (!(venueMap[locationkey])) {
-        venueMap[locationkey] = [];
+      const locationid = location.id;
+      if (!(venueMap[locationid])) {
+        venueMap[locationid] = [];
       }
     })
     props.venues.forEach(venue => {
-      const venuekey = venue.key;
-      venueMap[venuekey].push(venue);
+      const venueid = venue.id;
+      venueMap[venueid].push(venue);
     })
     return venueMap;
   }
@@ -33,8 +33,8 @@ function LocationList(props: LocationListProps) {
     <div className="Location">
       <br></br>
             {props.locations.map((location: LocationProps) => {
-              return (<div key={location.key}>{Location({
-                name: location.name, image: location.image, lat: location.lat, long: location.long, key: location.key, venues: venuesByLocation[location.key]
+              return (<div key={location.id}>{Location({
+                name: location.name, image: location.image, lat: location.lat, long: location.long, id: location.id, venues: venuesByLocation[location.id]
               })}</div>)
             })}
         <br></br>

@@ -19,7 +19,7 @@ function VenueList(props: VenueListProps) {
                 {Venue({
                   rating: venue.rating,
                   name: venue.name,
-                  key: venue.key,
+                  id: venue.id,
                   image: venue.image,
                   category: venue.category
                 })}

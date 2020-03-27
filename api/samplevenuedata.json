@@ -5,28 +5,28 @@
       "image": "",
       "rating": 5,
       "category": "Food",
-      "key": 0
+      "id": "niagara"
     },
     {
       "name": "Local Businesses",
       "image": "",
       "rating": 5,
       "category": "Food",
-      "key": 0
+      "id": "niagara"
     },
     {
-      "name": "Please!",
+      "name": "It be like that sometimes",
       "image": "",
       "rating": 5,
-      "category": "Food",
-      "key": 0
+      "category": "Drinks",
+      "id": "niagara"
     },
     {
       "name": "Record Breaking Unemployment",
       "image": "",
       "rating": 5,
-      "category": "Trending",
-      "key": 0
+      "category": "Sights",
+      "id": "niagara"
     }
   ]
 }

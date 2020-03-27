@@ -11,12 +11,12 @@ interface LocationDetailsProps {
   lat: number;
   long: number;
   name: string;
-  key: number;
+  id: string;
   venues: VenueProps[];
 }
 
 interface VenueCategoryMap {
-  [key: string]: VenueProps[];
+  [id: string]: VenueProps[];
 }
 
 function LocationDetails(props: LocationDetailsProps) {
@@ -38,7 +38,7 @@ function LocationDetails(props: LocationDetailsProps) {
   return (
     <div className="LocationDetails">
       {Object.keys(categorizedVenues).map(category => {
-        return (<div className="category" key={props.key}><Row><Col>
+        return (<div className="category" key={props.id}><Row><Col>
         {VenueCategory({name: category, venueList: categorizedVenues[category]})}
         </Col></Row><br></br></div>);
       })}
