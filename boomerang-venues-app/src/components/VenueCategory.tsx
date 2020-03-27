@@ -10,11 +10,11 @@ interface VenueCategoryProps {
 }
 
 function VenueCategory(props: VenueCategoryProps) {
-  function categoryDisplay(venues: VenueProps[]) {
-    if (venues.length == 0) {
+  function categoryDisplay(venueList: VenueProps[]) {
+    if (venueList.length === 0) {
       return (<p>Nothing to see here &#128531;</p>);
     }
-    return VenueList({ venues: props.venueList});
+    return VenueList({ venues: venueList});
   }
   return (
     <div className="VenueCategory" key={props.name}>

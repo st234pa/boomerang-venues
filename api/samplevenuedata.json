@@ -1,0 +1,32 @@
+{
+  "venues": [
+    {
+      "name": "Support Your",
+      "image": "",
+      "rating": 5,
+      "category": "Food",
+      "key": 0
+    },
+    {
+      "name": "Local Businesses",
+      "image": "",
+      "rating": 5,
+      "category": "Food",
+      "key": 0
+    },
+    {
+      "name": "Please!",
+      "image": "",
+      "rating": 5,
+      "category": "Food",
+      "key": 0
+    },
+    {
+      "name": "Record Breaking Unemployment",
+      "image": "",
+      "rating": 5,
+      "category": "Trending",
+      "key": 0
+    }
+  ]
+}

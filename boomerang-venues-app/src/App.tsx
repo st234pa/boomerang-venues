@@ -1,37 +1,58 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import { LocationList } from './components/LocationList';
-import { LocationDetailsProps } from './components/LocationDetails';
+import { LocationProps } from './components/Location';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container } from 'react-bootstrap';
+import { VenueProps } from './components/Venue';
 
-interface AppDataSet {
-  [key: string]: LocationDetailsProps;
+interface LocationDataSet {
+  locations: LocationProps[];
+}
+
+interface VenueDataSet {
+  venues: VenueProps[];
 }
 
 function App() {
-  const [data, setData] = useState<AppDataSet>({});
-  var locations: LocationDetailsProps[] = [];
+  const [locationData, setLocationData] = useState<LocationDataSet>({
+    locations: [],
+  });
+
+  const [venueData, setVenueData] = useState<VenueDataSet>({ venues: [] });
 
   useEffect(() => {
-    fetch('http://localhost:5000/sampledata')
+    fetch('http://localhost:5000/samplelocationdata')
       .then(res => res.json())
       .then(result => {
-        setData(result);
+        setLocationData(result);
       });
   }, []);
 
-  Object.keys(data).forEach(key => {
-    locations.push(data[key]);
-  });
+  useEffect(() => {
+    fetch('http://localhost:5000/samplevenuedata')
+      .then(res => res.json())
+      .then(result => {
+        setVenueData(result);
+      });
+  }, []);
 
-  return (
-    <div className="App">
-      <br></br>
-      <Container fluid>{LocationList({ locations: locations })}</Container>
-      <br></br>
-    </div>
-  );
+  if (locationData && venueData) {
+    return (
+      <div className="App">
+        <br></br>
+        <Container fluid>
+          {LocationList({
+            locations: locationData.locations,
+            venues: venueData.venues,
+          })}
+        </Container>
+        <br></br>
+      </div>
+    );
+  } else {
+    return <p>Loading</p>;
+  }
 }
 
 export default App;

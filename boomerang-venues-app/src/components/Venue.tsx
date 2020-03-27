@@ -7,6 +7,7 @@ interface VenueProps {
   rating: number;
   image: string;
   key: number;
+  category: string;
 }
 
 function Venue(props: VenueProps) {

@@ -1,0 +1,18 @@
+{
+  "locations": [
+    {
+      "name": "Niagara Falls",
+      "image": "",
+      "lat": 0,
+      "long": 0,
+      "key": 0
+    },
+    {
+      "name": "Grand Canyon",
+      "image": "",
+      "lat": 0,
+      "long": 0,
+      "key": 1
+    }
+  ]
+}

@@ -1,10 +1,21 @@
-import React, { useState } from 'react';
+import React from 'react';
 import '../App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Row, Col, Accordion, Card, Button } from 'react-bootstrap';
-import { LocationDetailsProps, LocationDetails } from './LocationDetails';
+import { LocationDetails } from './LocationDetails';
+import { VenueProps } from './Venue';
 
-function Location(props: LocationDetailsProps) {
+interface LocationProps {
+  name: string;
+  image: string;
+  lat: number;
+  long: number;
+  key: number;
+  venues: VenueProps[];
+}
+
+function Location(props: LocationProps) {
+  
   return (
     <div className="Location">
       <br></br>
@@ -22,7 +33,7 @@ function Location(props: LocationDetailsProps) {
               </Card.Body>
               <Accordion.Collapse eventKey="0">
                 <div className="venuesNearHere">
-                  <h6>What's there to do around here?</h6>
+                  {props.venues.length == 0? <h6>Nothing to see here &#128531;</h6> : <h6>What's there to do around here &#128520;?</h6>}
                   <Card.Body>
                     {LocationDetails({
                       name: props.name,
@@ -30,6 +41,7 @@ function Location(props: LocationDetailsProps) {
                       lat: props.lat,
                       long: props.long,
                       venues: props.venues,
+                      key: props.key
                     })}
                   </Card.Body>
                 </div>
@@ -42,4 +54,5 @@ function Location(props: LocationDetailsProps) {
     </div>
   );
 }
+export type {LocationProps};
 export { Location };

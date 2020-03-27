@@ -6,8 +6,15 @@ app = Flask(__name__)
 cors = CORS(app)
 
 
-@app.route('/sampledata')
-def get_venues():
-    with open('sampledata.json') as f:
+@app.route('/samplelocationdata')
+def get_sample_locations():
+    with open('samplelocationdata.json') as f:
+        data = json.load(f)
+    return data
+
+
+@app.route('/samplevenuedata')
+def get_sample_venues():
+    with open('samplevenuedata.json') as f:
         data = json.load(f)
     return data

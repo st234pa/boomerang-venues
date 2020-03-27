@@ -2,45 +2,48 @@ import React from 'react';
 import '../App.css';
 import {VenueCategory} from './VenueCategory';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Container, Row, Col} from 'react-bootstrap'
+import { Row, Col } from 'react-bootstrap'
 import { VenueProps } from './Venue';
 
-
-interface CategoryDataSet {
-  [key: string]: VenueProps[];
-}
 
 interface LocationDetailsProps {
   image: string;
   lat: number;
   long: number;
   name: string;
-  venues: CategoryDataSet;
+  key: number;
+  venues: VenueProps[];
 }
 
-function LocationDetails(props: LocationDetailsProps) { 
+interface VenueCategoryMap {
+  [key: string]: VenueProps[];
+}
+
+function LocationDetails(props: LocationDetailsProps) {
+  var categorizedVenues: VenueCategoryMap = {};
+  function categorizeVenues(venues: VenueProps[]) {
+    var venueMap: VenueCategoryMap = {};
+    venues.forEach(venue => {
+      const category: string = venue.category;
+      if (!(venueMap[category])) {
+        venueMap[category] = [];
+      }
+      venueMap[category].push(venue);
+    });
+    return venueMap;
+  }
+  console.log(props);
+  categorizedVenues = categorizeVenues(props.venues); 
+
   return (
     <div className="LocationDetails">
-        <Row>
-          <Col>
-          {VenueCategory({ name: 'Food', venueList: props.venues["trending"]})}
-          </Col>
-        </Row>
-        <br></br>
-        <Row>
-          <Col>
-          {VenueCategory({ name: 'Drink', venueList: props.venues["food"]})}
-          </Col>
-        </Row>
-        <br></br>
-        <Row>
-          <Col>
-          {VenueCategory({ name: 'Sights', venueList: props.venues["sights"]})}
-          </Col>
-        </Row>
-      <br></br>
+      {Object.keys(categorizedVenues).map(category => {
+        return (<div className="category" key={props.key}><Row><Col>
+        {VenueCategory({name: category, venueList: categorizedVenues[category]})}
+        </Col></Row><br></br></div>);
+      })}
     </div>
   );
 }
-export type {CategoryDataSet, LocationDetailsProps};
+export type {LocationDetailsProps};
 export { LocationDetails };
