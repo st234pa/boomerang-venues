@@ -32,7 +32,6 @@ function LocationDetails(props: LocationDetailsProps) {
     });
     return venueMap;
   }
-  console.log(props);
   categorizedVenues = categorizeVenues(props.venues); 
 
   return (

@@ -22,7 +22,7 @@ function App() {
   const [venueData, setVenueData] = useState<VenueDataSet>({ venues: [] });
 
   useEffect(() => {
-    fetch('http://localhost:5000/samplelocationdata')
+    fetch('http://localhost:5000/locationdata')
       .then(res => res.json())
       .then(result => {
         setLocationData(result);

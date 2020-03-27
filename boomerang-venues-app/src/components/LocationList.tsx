@@ -23,12 +23,13 @@ function LocationList(props: LocationListProps) {
     })
     props.venues.forEach(venue => {
       const venueid = venue.id;
-      venueMap[venueid].push(venue);
+      if (venueMap[venueid]) {
+        venueMap[venueid].push(venue);
+      }
     })
     return venueMap;
   }
   venuesByLocation = sortVenuesByLocation();
-  console.log(venuesByLocation);
   return (
     <div className="Location">
       <br></br>

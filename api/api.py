@@ -7,12 +7,18 @@ app = Flask(__name__)
 cors = CORS(app)
 
 
-locations = {}
+locations = {"locations": []}
 
 with open('../unsplash.tsv') as f:
     reader = csv.DictReader(f, dialect='excel-tab')
-    # for row in reader:
-    # print(row)
+    for row in reader:
+        row_id = row['']
+        name = row['location_name']
+        lat = row['location_latitude']
+        long = row['location_longitude']
+        image = row['download_link']
+        locations["locations"].append({"name": name, "lat": lat,
+                                       "long": long, "image": image, "id": row_id})
 
 
 @app.route('/samplelocationdata')
