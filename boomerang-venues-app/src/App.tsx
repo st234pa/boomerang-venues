@@ -3,7 +3,7 @@ import './App.css';
 import { LocationList } from './components/LocationList';
 import { LocationProps } from './components/Location';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Container } from 'react-bootstrap';
+import { Container, Row, Col, Button } from 'react-bootstrap';
 import { VenueProps } from './components/Venue';
 
 interface LocationDataSet {
@@ -15,6 +15,8 @@ interface VenueDataSet {
 }
 
 function App() {
+  const [refreshCount, setRefreshCount] = useState(0);
+
   const [locationData, setLocationData] = useState<LocationDataSet>({
     locations: [],
   });
@@ -22,12 +24,15 @@ function App() {
   const [venueData, setVenueData] = useState<VenueDataSet>({ venues: [] });
 
   useEffect(() => {
-    fetch('http://localhost:5000/locationdata')
+    console.log(refreshCount);
+    const url: string = 'http://localhost:5000/locationdata/' + refreshCount;
+    console.log(url);
+    fetch(url)
       .then(res => res.json())
       .then(result => {
         setLocationData(result);
       });
-  }, []);
+  }, [refreshCount]);
 
   useEffect(() => {
     fetch('http://localhost:5000/samplevenuedata')
@@ -42,10 +47,26 @@ function App() {
       <div className="App">
         <br></br>
         <Container fluid>
-          {LocationList({
-            locations: locationData.locations,
-            venues: venueData.venues,
-          })}
+          <Row>
+            <Col>
+              <Button
+                variant="outline-dark"
+                onClick={() => {
+                  setRefreshCount(refreshCount + 1);
+                }}
+              >
+                New Destination
+              </Button>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              {LocationList({
+                locations: locationData.locations,
+                venues: venueData.venues,
+              })}
+            </Col>
+          </Row>
         </Container>
         <br></br>
       </div>

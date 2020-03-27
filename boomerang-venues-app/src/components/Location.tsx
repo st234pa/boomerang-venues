@@ -19,8 +19,7 @@ function Location(props: LocationProps) {
   return (
     <div className="Location">
       <br></br>
-      <Row>
-        <Col>
+      
           <Accordion>
             <Card>
               <Card.Img variant="top" src={props.image} alt="Image not found" />
@@ -48,8 +47,7 @@ function Location(props: LocationProps) {
               </Accordion.Collapse>
             </Card>
           </Accordion>
-        </Col>
-      </Row>
+       
       <br></br>
     </div>
   );

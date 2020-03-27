@@ -1,13 +1,14 @@
 from flask import Flask
-from flask_cors import CORS
+from flask_cors import CORS, cross_origin
 import json
 import csv
+import random
 
 app = Flask(__name__)
-cors = CORS(app)
+cors = CORS(app, resources={r"/foo": {"origins": "*"}})
+app.config['CORS_HEADERS'] = 'Content-Type'
 
-
-locations = {"locations": []}
+locations = []
 
 with open('../unsplash.tsv') as f:
     reader = csv.DictReader(f, dialect='excel-tab')
@@ -17,8 +18,8 @@ with open('../unsplash.tsv') as f:
         lat = row['location_latitude']
         long = row['location_longitude']
         image = row['download_link']
-        locations["locations"].append({"name": name, "lat": lat,
-                                       "long": long, "image": image, "id": row_id})
+        locations.append({"name": name, "lat": lat,
+                          "long": long, "image": image, "id": row_id})
 
 
 @app.route('/samplelocationdata')
@@ -35,9 +36,12 @@ def get_sample_venues():
     return data
 
 
-@app.route('/locationdata')
-def get_locations():
-    return locations
+@app.route('/locationdata/<int:index>')
+@cross_origin(origin='*', headers=['Content-Type', 'Authorization'])
+def get_location(index):
+    number_of_locations = len(locations)
+    print(index % number_of_locations)
+    return {"locations": [locations[index % number_of_locations]]}
 
 
 @app.route('/venuedata')
