@@ -13,7 +13,7 @@ function App() {
   ];
   return (
     <div className="App">
-      <div class="container-fluid">
+      <div className="container-fluid">
         {venues.map((value, index) => {
           return Venue({ value: value, index: index });
         })}
