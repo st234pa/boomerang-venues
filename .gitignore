@@ -25,6 +25,7 @@
 *.log
 *.sql
 *.sqlite
+*.tsv
 
 # OS generated files #
 ######################
@@ -35,3 +36,9 @@
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# From this project #
+#####################
+venv
+__pycache__
+*.xcodeproj
