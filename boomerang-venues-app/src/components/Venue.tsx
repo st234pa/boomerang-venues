@@ -21,7 +21,7 @@ function Venue(props: VenueProps) {
               <Card.Img variant="top" src={props.image} alt="Image not found" />
               <Card.Body>
                 <Card.Title>{props.name}</Card.Title>
-                <Card.Text>{props.rating} out of 5 stars</Card.Text>
+                <Card.Text>{props.rating} out of 10</Card.Text>
               </Card.Body>
             </Card>
         </Col>

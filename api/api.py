@@ -80,6 +80,7 @@ def classify_category(categories):
             return "Food"
         if short_name in drink:
             return "Drink"
+    return "Miscellaneous"
 
 
 @app.route('/venuedata/<ids>', methods=["GET"])
@@ -98,4 +99,4 @@ def get_venue_details(ids):
         rating = venue_results['rating']
         category = classify_category(venue_results['categories'])
         return {"name": name, "locationId": location_id, "venueId": venue_id, "image": image, "rating": rating, "category": category}
-    return {"name": "", "locationId": "", "venueId": "", "image": "", "rating": 0, "category": ""}
+    return {"name": "Placeholder for Lack of Queries", "locationId": location_id, "venueId": venue_id, "image": "", "rating": 0, "category": classify_category([])}
