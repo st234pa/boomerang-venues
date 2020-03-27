@@ -68,3 +68,5 @@ DerivedData/
 #####################
 venv
 __pycache__
+.env
+.flaskenv
