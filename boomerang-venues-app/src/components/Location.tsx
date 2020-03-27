@@ -26,6 +26,7 @@ function Location(props: LocationProps) {
               <br></br>
               <Card.Title>{props.name}</Card.Title>
               <Card.Body>
+                <Card.Text>({props.lat}, {props.long})</Card.Text>
                 <Accordion.Toggle as={Button} variant="button" eventKey="0">
                   <h3>&#129488;</h3>
                 </Accordion.Toggle>

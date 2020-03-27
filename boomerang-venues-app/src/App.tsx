@@ -18,29 +18,35 @@ function App() {
   const [refreshCount, setRefreshCount] = useState(0);
 
   const [locationData, setLocationData] = useState<LocationDataSet>({
-    locations: [],
+    locations: [{ lat: 0, long: 0, name: '', image: '', id: '', venues: [] }],
   });
+
+  const [lat, setLat] = useState(40.7484);
+  const [long, setLong] = useState(-73.9857);
 
   const [venueData, setVenueData] = useState<VenueDataSet>({ venues: [] });
 
   useEffect(() => {
-    console.log(refreshCount);
     const url: string = 'http://localhost:5000/locationdata/' + refreshCount;
-    console.log(url);
     fetch(url)
       .then(res => res.json())
       .then(result => {
         setLocationData(result);
       });
-  }, [refreshCount]);
+  }, [refreshCount, lat, long]);
 
   useEffect(() => {
-    fetch('http://localhost:5000/samplevenuedata')
+    setLat(locationData.locations[0].lat);
+    setLong(locationData.locations[0].long);
+  }, [locationData]);
+
+  useEffect(() => {
+    fetch('http://localhost:5000/venuedata/' + lat + ',' + long)
       .then(res => res.json())
       .then(result => {
-        setVenueData(result);
+        setVenueData(result.venues);
       });
-  }, []);
+  }, [lat, long]);
 
   if (locationData && venueData) {
     return (

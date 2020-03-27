@@ -1,8 +1,14 @@
 from flask import Flask
+import requests
 from flask_cors import CORS, cross_origin
 import json
 import csv
 import random
+import dotenv
+import os
+dotenv.load_dotenv()
+clientid = os.environ.get("client-id")
+clientsecret = os.environ.get("client-secret")
 
 app = Flask(__name__)
 cors = CORS(app, resources={r"/foo": {"origins": "*"}})
@@ -23,6 +29,7 @@ with open('../unsplash.tsv') as f:
 
 
 @app.route('/samplelocationdata')
+@cross_origin(origin='*', headers=['Content-Type', 'Authorization'])
 def get_sample_locations():
     with open('samplelocationdata.json') as f:
         data = json.load(f)
@@ -30,6 +37,7 @@ def get_sample_locations():
 
 
 @app.route('/samplevenuedata')
+@cross_origin(origin='*', headers=['Content-Type', 'Authorization'])
 def get_sample_venues():
     with open('samplevenuedata.json') as f:
         data = json.load(f)
@@ -40,10 +48,14 @@ def get_sample_venues():
 @cross_origin(origin='*', headers=['Content-Type', 'Authorization'])
 def get_location(index):
     number_of_locations = len(locations)
-    print(index % number_of_locations)
     return {"locations": [locations[index % number_of_locations]]}
 
 
-@app.route('/venuedata')
-def get_venues():
-    return {}
+@app.route('/venuedata/<latlong>', methods=["GET"])
+@cross_origin(origin='*', headers=['Content-Type', 'Authorization'])
+def get_venues(latlong):
+    venuesParams = {'ll': latlong, 'radius': '60',
+                    'client_id': clientid, 'client_secret': clientsecret, 'v': '20200327', 'limit': 1}
+    venuesUrl = "https://api.foursquare.com/v2/venues/explore"
+    venues = requests.get(venuesUrl, venuesParams).json()
+    return {"venues": []}

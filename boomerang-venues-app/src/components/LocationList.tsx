@@ -15,18 +15,21 @@ function LocationList(props: LocationListProps) {
   var venuesByLocation: VenueLocationMap = {};
   function sortVenuesByLocation() {
     var venueMap: VenueLocationMap = {};
-    props.locations.forEach(location => {
-      const locationid = location.id;
-      if (!(venueMap[locationid])) {
-        venueMap[locationid] = [];
-      }
-    })
-    props.venues.forEach(venue => {
-      const venueid = venue.id;
-      if (venueMap[venueid]) {
-        venueMap[venueid].push(venue);
-      }
-    })
+    if (props.locations) {
+      props.locations.forEach(location => {
+        const locationid = location.id;
+        if (!(venueMap[locationid])) {
+          venueMap[locationid] = [];
+        }
+      })
+    }
+    if (props.venues) {
+      props.venues.forEach(venue => {
+        const venueid = venue.id;
+        if (venueMap[venueid]) {
+          venueMap[venueid].push(venue);
+        }
+      })}
     return venueMap;
   }
   venuesByLocation = sortVenuesByLocation();
