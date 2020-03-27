@@ -17,15 +17,12 @@ function LocationList(props: LocationListProps) {
     var venueMap: VenueLocationMap = {};
       props.locations.forEach((location: LocationProps)=> {
         const locationId: string = location.locationId;
-        console.log(locationId)
         if (!(venueMap[locationId])) {
           venueMap[locationId] = [];
         }
       })
-      console.log(props.venues)
       props.venues.forEach((venue: VenueProps) => {
         const venueLocationId: string = venue.locationId;
-        console.log(venueLocationId);
         if (venueMap[venueLocationId]) {
           venueMap[venueLocationId].push(venue);
         }
@@ -33,7 +30,6 @@ function LocationList(props: LocationListProps) {
     return venueMap;
   }
   venuesByLocation = sortVenuesByLocation();
-  console.log(venuesByLocation)
   return (
     <div className="Location">
       <br></br>

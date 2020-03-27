@@ -22,7 +22,7 @@ function VenueCategory(props: VenueCategoryProps) {
       <Card>
         <Card.Header>
           <Accordion.Toggle as={Button} variant="link" eventKey="0">
-            {props.name}
+            {props.name+ " (" + props.venueList.length + ")"}
           </Accordion.Toggle>
         </Card.Header>
         <Accordion.Collapse eventKey="0">
