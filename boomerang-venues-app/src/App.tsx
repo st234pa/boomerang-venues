@@ -11,8 +11,21 @@ interface AppDataSet {
 
 function App() {
   const [data, setData] = useState<AppDataSet>({
-    'placeholder location': {
+    'placeholder location 0': {
       name: 'Niagara Falls',
+      image: '',
+      lat: 0,
+      long: 0,
+      venues: {
+        trending: [
+          { name: 'Support Your', rating: 5, key: 0 },
+          { name: 'Local Businesses', rating: 5, key: 1 },
+        ],
+        food: [],
+      },
+    },
+    'placeholder location 1': {
+      name: 'Grand Canyon',
       image: '',
       lat: 0,
       long: 0,
